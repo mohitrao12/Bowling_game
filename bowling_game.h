@@ -4,7 +4,8 @@
 
 #include <vector>
 
-class BowlingGame {
+class BowlingGame
+{
 public:
     void roll(int pins);
     int score() const;
