@@ -1,15 +1,13 @@
 #  Bowling Game Score Calculator
 
 This is a console-based C++ application to calculate the score of a single player in a bowling game.
-The game logic strictly follows the standard 10-frame bowling rules including **Strikes**, **Spares**, and special handling of the **10th frame**.
+The game logic strictly follows the standard 10-frame bowling rules, including **Strikes**, **Spares**, and special handling of the **10th frame**.
 
-## Project Structure
-
-├── CMakeLists.txt        # Build configuration
-├── main.cpp              # Entry point
-├── bowling_game.h        # BowlingGame class declaration
-├── bowling_game.cpp      # BowlingGame class implementation
-└── README.md             # Project documentation
+* CMakeLists.txt        # Build configuration
+* main.cpp              # Entry point
+* bowling_game.h        # BowlingGame class declaration
+* bowling_game.cpp      # BowlingGame class implementation
+* README.md             # Project documentation
 
 
 ##  Build & Run Instructions
