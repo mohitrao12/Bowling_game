@@ -25,7 +25,18 @@ int BowlingGame::score() const
             }
             else
             {
-                int frameScore = rolls[rollIndex] + rolls[rollIndex + 1];
+                int first = rolls[rollIndex];
+                int second = rolls[rollIndex + 1];
+                int frameScore = first + second;
+
+                // Invalid frame: more than 10 pins in two rolls
+                if (frameScore > 10)
+                {
+                    std::cout << "Warning: Invalid frame score (" << first << "+" << second
+                              << " > 10). Frame skipped.\n";
+                    rollIndex += 2;
+                    continue;
+                }
                 if (frameScore == 10)
                 { // Spare
                     totalScore += 10;

@@ -2,6 +2,7 @@
 #define BOWLING_GAME_H
 
 #include <vector>
+#include<iostream>
 
 class BowlingGame
 {

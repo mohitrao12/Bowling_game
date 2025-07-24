@@ -1,4 +1,3 @@
-#include <iostream>
 #include "bowling_game.h"
 
 int main()
@@ -23,6 +22,7 @@ int main()
             std::cout << "Frame " << frame << " - Roll 2: ";
             std::cin >> pins;
             game.roll(pins);
+            // std::cout << "result of Frame "<<frame<<": " << game.score() << std::endl;
         }
         else
         {
@@ -45,7 +45,8 @@ int main()
             }
         }
     }
+    int total=game.score(); 
 
-    std::cout << "Final Score: " << game.score() << std::endl;
+    std::cout<< "Final Score: "<<total<< std::endl;
     return 0;
 }
