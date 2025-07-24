@@ -51,12 +51,12 @@ make
 * A **Spare**:  10 pins in 2 rolls → add **next 1 roll** as bonus.
 * A **Strike**: 10 pins in 1 roll → add **next 2 rolls** as bonus.
 * Special logic for 10th frame: up to 3 rolls allowed.
-| Term       | Meaning                            | Bonus Applied      |
-| ---------- | ---------------------------------- | ------------------ |
-| Strike     | All 10 pins on first roll          | + next 2 rolls     |
-| Spare      | All 10 pins in 2 rolls             | + next 1 roll      |
-| Open       | Less than 10 pins in 2 rolls       | No bonus           |
-| 10th Frame | Max 3 rolls if strike/spare scored | No bonus from 11th |
+  | Term       | Meaning                            | Bonus Applied      |
+  | ---------- | ---------------------------------- | ------------------ |
+  | Strike     | All 10 pins on first roll          | + next 2 rolls     |
+  | Spare      | All 10 pins in 2 rolls             | + next 1 roll      |
+  | Open       | Less than 10 pins in 2 rolls       | No bonus           |
+  | 10th Frame | Max 3 rolls if strike/spare scored | No bonus from 11th |
 
 ### Code Flow:
 
