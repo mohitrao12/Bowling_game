@@ -4,13 +4,48 @@
 int main()
 {
     BowlingGame game;
+    int pins;
 
-    int inputRolls[] = {5, 4, 5, 5, 10, 4, 5, 6, 4, 10, 7, 2, 10, 10, 2, 6};
-    for (int pins : inputRolls)
+    for (int frame = 1; frame <= 10; ++frame)
     {
-        game.roll(pins);
+        if (frame < 10)
+        {
+            std::cout << "Frame " << frame << " - Roll 1: ";
+            std::cin >> pins;
+            game.roll(pins);
+
+            if (pins == 10)
+            {
+                std::cout << "Strike!\n";
+                continue;
+            }
+
+            std::cout << "Frame " << frame << " - Roll 2: ";
+            std::cin >> pins;
+            game.roll(pins);
+        }
+        else
+        {
+            std::cout << "Frame 10 - Roll 1: ";
+            int roll1;
+            std::cin >> roll1;
+            game.roll(roll1);
+
+            std::cout << "Frame 10 - Roll 2: ";
+            int roll2;
+            std::cin >> roll2;
+            game.roll(roll2);
+
+            if (roll1 == 10 || (roll1 + roll2 == 10))
+            {
+                std::cout << "Bonus Roll (Strike or Spare in 10th): ";
+                int bonusRoll;
+                std::cin >> bonusRoll;
+                game.roll(bonusRoll);
+            }
+        }
     }
 
-    std::cout << "Total score: " << game.score() << std::endl;
+    std::cout << "Final Score: " << game.score() << std::endl;
     return 0;
 }

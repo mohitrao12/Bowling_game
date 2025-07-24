@@ -1,4 +1,3 @@
-// bowling_game.h
 #ifndef BOWLING_GAME_H
 #define BOWLING_GAME_H
 
@@ -7,11 +6,11 @@
 class BowlingGame
 {
 public:
-    void roll(int pins);
-    int score() const;
+    void roll(int pins); // Record a roll
+    int score() const;   // Calculate final score
 
 private:
-    std::vector<int> rolls;
+    std::vector<int> rolls; // All recorded rolls
 };
 
 #endif // BOWLING_GAME_H
