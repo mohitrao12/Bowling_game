@@ -1,52 +1,63 @@
+#include <iostream>
 #include "bowling_game.h"
+#include "constants.h"
 
-int main()
-{
-    BowlingGame game;
+bool isValidIntegerInput(int& input) {
+    std::cin >> input;
+    if (std::cin.fail()) {
+        std::cin.clear();
+        std::cin.ignore(10000, '\n');
+        return false;
+    }
+    return true;
+}
+
+int getValidatedRoll(int maxPins) {
     int pins;
+    while (true) {
+        std::cout << "Enter pins (0 to " << maxPins << "): ";
+        if (isValidIntegerInput(pins) && pins >= 0 && pins <= maxPins) {
+            return pins;
+        }
+        std::cout << "Invalid input. Please enter a number between 0 and " << maxPins << ".\n";
+    }
+}
 
-    for (int frame = 1; frame <= 10; ++frame)
-    {
-        if (frame < 10)
-        {
-            std::cout << "Frame " << frame << " - Roll 1: ";
-            std::cin >> pins;
-            game.roll(pins);
+int main() {
+    BowlingGame game;
 
-            if (pins == 10)
-            {
+    for (int frame = 1; frame <= TOTAL_FRAMES; ++frame) {
+        std::cout << "\nFrame " << frame << " - Roll 1: ";
+        int roll1 = getValidatedRoll(MAX_PINS);
+        game.roll(roll1);
+
+        if (frame < TOTAL_FRAMES) {
+            if (roll1 == MAX_PINS) {
                 std::cout << "Strike!\n";
                 continue;
             }
 
             std::cout << "Frame " << frame << " - Roll 2: ";
-            std::cin >> pins;
-            game.roll(pins);
-            // std::cout << "result of Frame "<<frame<<": " << game.score() << std::endl;
-        }
-        else
-        {
-            std::cout << "Frame 10 - Roll 1: ";
-            int roll1;
-            std::cin >> roll1;
-            game.roll(roll1);
-
-            std::cout << "Frame 10 - Roll 2: ";
             int roll2;
-            std::cin >> roll2;
+            while (true) {
+                roll2 = getValidatedRoll(MAX_PINS);
+                if (roll1 + roll2 <= MAX_PINS) break;
+                std::cout << "Invalid: Total pins in a frame cannot exceed " << MAX_PINS << ".\n";
+            }
+            game.roll(roll2);
+        } else {
+            std::cout << "Frame 10 - Roll 2: ";
+            int roll2 = getValidatedRoll(MAX_PINS);
             game.roll(roll2);
 
-            if (roll1 == 10 || (roll1 + roll2 == 10))
-            {
+            if (roll1 == MAX_PINS || (roll1 + roll2 == MAX_PINS)) {
                 std::cout << "Bonus Roll (Strike or Spare in 10th): ";
-                int bonusRoll;
-                std::cin >> bonusRoll;
+                int bonusRoll = getValidatedRoll(MAX_PINS);
                 game.roll(bonusRoll);
             }
         }
     }
-    int total=game.score(); 
 
-    std::cout<< "Final Score: "<<total<< std::endl;
+    std::cout << "\nFinal Score: " << game.score() << std::endl;
     return 0;
 }
